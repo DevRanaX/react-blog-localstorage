@@ -2,12 +2,26 @@ import React from 'react'
 import Layout from '../components/Layout'
 import { Link } from 'react-router-dom'
 import timeAgo from '../utilis/timeAgo'
+import { defaultBlogs } from '../data/defaultBlogs'
 
 
 export default function Dashboard() {
-  const blogs = JSON.parse(localStorage.getItem('blogs')) || []
   const users = JSON.parse(localStorage.getItem('users')) || null
   // const user = users.find(user => user.isLogin);
+
+  const [blogs, setBlogs] = React.useState([])
+
+  React.useEffect(() => {
+    const stored = JSON.parse(localStorage.getItem('blogs')) || []
+    const storedIds = new Set(stored.map((blog) => blog.id))
+    const missingDefaults = defaultBlogs.filter((blog) => !storedIds.has(blog.id))
+    const mergedBlogs = stored.length === 0 ? defaultBlogs : [...stored, ...missingDefaults]
+
+    if (mergedBlogs.length !== stored.length) {
+      localStorage.setItem('blogs', JSON.stringify(mergedBlogs))
+    }
+    setBlogs(mergedBlogs)
+  }, [])
 
   // search 
   const [search, setSearch] = React.useState('')

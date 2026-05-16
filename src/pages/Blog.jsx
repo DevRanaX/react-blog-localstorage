@@ -10,6 +10,19 @@ export default function Blog() {
     const users = JSON.parse(localStorage.getItem('users')) || []
     const user = users.find(user => user.isLogin);
 
+    if (!blog) {
+        return (
+            <Layout>
+                <div className="flex justify-center items-center h-96">
+                    <div className="bg-white p-10 rounded-lg shadow text-center">
+                        <h2 className="text-2xl font-semibold mb-2">Blog not found</h2>
+                        <p className="text-gray-600">The blog you are looking for does not exist or has been removed.</p>
+                    </div>
+                </div>
+            </Layout>
+        )
+    }
+
     const handleDelete = () => {
         if (confirm('Are you sure you want to delete this post?')) {
             const index = blogs.findIndex(blog => blog.id == id);

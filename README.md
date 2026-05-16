@@ -35,6 +35,7 @@ npm run serve
 - Search post
 - Edit profile
 - Responsive Design (Mobile First) 
+- Default sample blog posts on first load
 
 ## New Features Add
 - Image add in Blogs
