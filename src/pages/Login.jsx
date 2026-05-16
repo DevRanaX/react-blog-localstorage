@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import Layout from '../components/Layout'
 
 export default function Login() {
     const loginHandler = (e) => {
@@ -21,7 +22,8 @@ export default function Login() {
         }
     }
   return (
-    <div className='bg-gray-100 h-screen flex justify-center items-center'>
+    <Layout>
+      <div className='bg-gray-100 min-h-[calc(100vh-140px)] flex justify-center items-center'>
         <div className="bg-white p-10 rounded-lg">
             <div className="text-center text-3xl text-gray-700 mb-2">
                 Login
@@ -45,6 +47,7 @@ export default function Login() {
             </div>
             <p className='text-center'> don't you have your account ? <Link className='text-blue-600 font-bold' to={`/signup`}>Signup</Link> </p>
         </div>  
-    </div>
+      </div>
+    </Layout>
   )
 }

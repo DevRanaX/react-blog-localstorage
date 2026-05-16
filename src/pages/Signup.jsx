@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Layout from '../components/Layout'
 import { generateChapture } from "../utilis/generateChapture";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 
@@ -45,8 +46,9 @@ export default function Signup() {
     };
   };
   return (
-    <div className="bg-gray-100 h-screen flex justify-center items-center">
-      <div className="bg-white p-10 rounded-lg">
+    <Layout>
+      <div className="bg-gray-100 min-h-[calc(100vh-140px)] flex justify-center items-center">
+        <div className="bg-white p-10 rounded-lg">
         <div className="text-center text-3xl text-gray-700 mb-2">Sign Up</div>
         <div className="flex justify-center items-center">
           <form onSubmit={signupHandler}>
@@ -144,5 +146,6 @@ export default function Signup() {
         </p>
       </div>
     </div>
+    </Layout>
   );
 }
